@@ -21,8 +21,6 @@ if ! command -v hashid &> /dev/null || ! command -v hashcat &> /dev/null; then
     exit 1
 fi
 
-
-
 # Prompt for hashed login
 sleep 2
 echo -e "\e[36mSubmit the hashed File Location\e[0m"
@@ -36,6 +34,7 @@ echo ""
 
 hashtypes=()
 hashlist=()
+passlist=$(locate passwordsdehash.txt)
 found_passwords=()
 
 if [[ $extension_hash  == $txt_hash ]]; then
@@ -69,7 +68,7 @@ if [[ $extension_hash  == $txt_hash ]]; then
 
 dehash() {
   echo -e "\e[36mAnalyzing $3 with $2\e[0m"
-  hashcat -a 0 -m $1 $3 ~/passwordsdehash.txt --quiet 2>/dev/null
+  hashcat -a 0 -m $1 $3 $passlist --quiet 2>/dev/null
   if ! grep -qiF $3 "$potfile"; then
     echo -e "\e[35mNo result.\e[0m"
   else
