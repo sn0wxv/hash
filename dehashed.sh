@@ -1,12 +1,9 @@
 #!/bin/bash
 
-if ! locate -q passwordsdehash.txt; then
-  wget -O ~/passwordsdehash.txt https://raw.githubusercontent.com/danielmiessler/SecLists/8bb957d260189c14b44117ae00c6a021a5d64216/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt
-fi
+passwordfilelocation=~/Desktop/passwords.txt
 
 # Clear terminal
 clear
-
 echo -e "\e[36m     _       \e[1m \e[36m _               _              _ \e[1m"
 echo -e "\e[36m    | |      \e[1m \e[36m| |             | |            | |\e[1m"
 echo -e "\e[36m  __| | ___  \e[1m \e[36m| |__   __ _ ___| |__   ___  __| |\e[1m"
@@ -34,7 +31,6 @@ echo ""
 
 hashtypes=()
 hashlist=()
-passlist=$(locate passwordsdehash.txt)
 found_passwords=()
 
 if [[ $extension_hash  == $txt_hash ]]; then
@@ -68,7 +64,7 @@ if [[ $extension_hash  == $txt_hash ]]; then
 
 dehash() {
   echo -e "\e[36mAnalyzing $3 with $2\e[0m"
-  hashcat -a 0 -m $1 $3 $passlist --quiet 2>/dev/null
+  hashcat -a 0 -m $1 $3 $passwordfilelocation --quiet 2>/dev/null
   if ! grep -qiF $3 "$potfile"; then
     echo -e "\e[35mNo result.\e[0m"
   else
