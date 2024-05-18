@@ -11,6 +11,11 @@ echo -e "\e[36m \__,_|\___| \e[1m \e[36m|_| |_|\__,_|___/_| |_|\___|\__,_|\e[1m"
 echo ""
 echo ""
 
+if ! command -v hashid &> /dev/null || ! command -v hashcat &> /dev/null; then
+    echo "Required tools 'hashid' and 'hashcat' are not installed. Please install them."
+    exit 1
+fi
+
 # Prompt for hashed login
 sleep 2
 echo -e "\e[36mSubmit the hashed File Location\e[0m"
@@ -58,11 +63,12 @@ if [[ $extension_hash  == $txt_hash ]]; then
 dehash() {
   echo -e "\e[36mAnalyzing $3 with $2\e[0m"
   hashcat -a 0 -m $1 $3 ~/Desktop/passwords.txt --quiet 2>/dev/null
-  if ! grep -q $3 "$potfile"; then
+  if ! grep -qiF $3 "$potfile"; then
     echo -e "\e[35mNo result.\e[0m"
   else
   echo -e "\e[36mSuccess\e[0m"
-  found_passwords+=($(grep $3 "$potfile"))
+
+  found_passwords+=($(grep $3 -iF "$potfile"))
   echo ""
   fi
   i+=(1)
