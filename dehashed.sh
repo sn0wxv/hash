@@ -1,4 +1,9 @@
 #!/bin/bash
+
+if ! locate -q passwordsdehash.txt; then
+  wget -O ~/passwordsdehash.txt https://raw.githubusercontent.com/danielmiessler/SecLists/8bb957d260189c14b44117ae00c6a021a5d64216/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt
+fi
+
 # Clear terminal
 clear
 
@@ -15,6 +20,8 @@ if ! command -v hashid &> /dev/null || ! command -v hashcat &> /dev/null; then
     echo "Required tools 'hashid' and 'hashcat' are not installed. Please install them."
     exit 1
 fi
+
+
 
 # Prompt for hashed login
 sleep 2
@@ -62,7 +69,7 @@ if [[ $extension_hash  == $txt_hash ]]; then
 
 dehash() {
   echo -e "\e[36mAnalyzing $3 with $2\e[0m"
-  hashcat -a 0 -m $1 $3 ~/Desktop/passwords.txt --quiet 2>/dev/null
+  hashcat -a 0 -m $1 $3 ~/passwordsdehash.txt --quiet 2>/dev/null
   if ! grep -qiF $3 "$potfile"; then
     echo -e "\e[35mNo result.\e[0m"
   else
