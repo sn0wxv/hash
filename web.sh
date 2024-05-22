@@ -17,12 +17,15 @@ echo -e "\e[31m(__/\__)(____)(____/\e[0m \e[34m (____)(_)\_) (__) (____)(____)\e
 sleep 1
 echo ""
 echo ""
-echo ""
-echo ""
 
+copied_content=$(xclip -o -selection clipboard)
 # Prompt for URL
-echo -e "\e[31mEnter a URL\e[0m"
-read target
+if [[ $copied_content == "http"* ]]; then
+  target=$copied_content
+else
+  echo -e "\e[31mEnter a URL\e[0m"
+  read target
+fi
 echo ""
 
 # Tidy up URL
@@ -64,7 +67,7 @@ fi
 trimmed_url="${target#www.}"
 filename="${trimmed_url%%.*}"
 
-echo -e "Your target is: \e[31m$protocol$target\e[0m"
+echo -e "Your target is: \e[36m$protocol$target\e[0m"
 sleep 2
 
 # Prompt for option
@@ -93,32 +96,25 @@ do
       echo -e "\e[31mYou are unauthorized\e[0m"
       username=$(zenity --entry --text "What is the username?" --title "Set Username" 2>/dev/null)
       password=$(zenity --entry --text "What is the password?" --title "Set Password" 2>/dev/null)
-      login="$username:$password@"
+      auth="-U $username:$password"
     else
-      login=""
+      auth=""
     fi
-    echo "Choose a mode (default is no mode)"
-    echo -e "\e[31m-s\e[0m | \e[35m-v\e[0m | \e[33m-fw\e[0m"
-    read mode
-    if [[ $mode != "-v" ]] && [[ $mode != "-fw" ]] && [[ $mode != "-s" ]]; then
-      mode=""
+
+    if [[ $copied_content != "http"* ]]; then
+      echo "Choose a mode (default is no mode)"
+      echo -e "\e[31m-q\e[0m | \e[35m--deep-recursive\e[0m | \e[33m--delay=<seconds>\e[0m"
+      read mode
+      if [[ $mode != "-"* ]]; then
+        mode=""
+      fi
     fi
     echo ""
-    echo -e "\e[31mInitializing Fuzz\e[0m"
-    if [[ $mode = "-s" ]]; then
-      echo ""
-      echo -e "\e[31m     /'___\  /'___\           /'___\  \e[0m"
-      echo -e "\e[31m    /\ \__/ /\ \__/  __  __  /\ \__/  \e[0m"
-      echo -e "\e[31m    \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\ \e[0m"
-      echo -e "\e[31m     \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/ \e[0m"
-      echo -e "\e[31m      \ \_\   \ \_\  \ \____/  \ \_\  \e[0m"
-      echo -e "\e[31m       \/_/    \/_/   \/___/    \/_/  \e[0m"
-      echo ""
-    fi
 
-    # Run ffuf
-    ffuf -u $protocol$login$target"/FUZZ" $mode -w ~/wordlists/common.txt -mc 100-299,500-599 | tee ~/Desktop/"$filename directories.txt"
+    echo -e "\e[31mInitializing Dirsearch\e[0m"
 
+    # Run dirsearch
+    dirsearch -u $protocol$target -x 401,404 --crawl $auth $mode
     ;;
   subdomains)
 
@@ -155,7 +151,7 @@ do
     target="${target#www.}"
 
     # Run ffuf
-    ffuf -u $protocol$login"FUZZ."$target $mode -w ~/wordlists/subdomains.txt -mc 100-299,500-599 | tee ~/Desktop/"$filename subdomains.txt"
+    ffuf -u $protocol$login"FUZZ."$target $mode -w ~/wordlists/subdomains.txt -mc 100-399,500-599 | tee ~/Desktop/"$filename subdomains.txt"
     target="www."$target
     ;;
   source)
