@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Image Fetcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #map {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            width: 600px;
+            height: 400px;
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #map img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter an Address to Get a Map Image</h1>
+    <form id="addressForm">
+        <input type="text" id="address" name="address" placeholder="Enter address" required>
+        <button type="submit">Get Map</button>
+    </form>
+    <div id="map">Map will appear here</div>
+
+    <script>
+        const form = document.getElementById('addressForm');
+        const mapDiv = document.getElementById('map');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const address = document.getElementById('address').value;
+            const apiKey = 'AIzaSyDNwyammTAtUEeIzbxLC7qtzvZzctoaelg';  // Replace with your actual API key
+
+            // URL encode the address
+            const encodedAddress = encodeURIComponent(address);
+
+            // Google Maps Static API URL
+            const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${encodedAddress}&zoom=14&size=600x400&key=${apiKey}`;
+
+            // Create an image element and set its src to the map URL
+            const img = document.createElement('img');
+            img.src = mapUrl;
+            img.alt = `Map of ${address}`;
+
+            // Clear previous map and append the new one
+            while (mapDiv.firstChild) {
+                mapDiv.removeChild(mapDiv.firstChild);
+            }
+            mapDiv.appendChild(img);
+        });
+    </script>
+</body>
+</html>

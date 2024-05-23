@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- RED color: rgb(94, 11, 11);-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -60,6 +61,42 @@
             left: 65px;
         }
 
+        .folder-icon1 {
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            left: 220px;
+            top: 36px;
+            object-fit: contain;
+            background-image: url(icons/folder\ icon.png);
+            transform: scale(0.4);
+            background-repeat: no-repeat;
+        }
+
+        .folder-icon2 {
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            left: 220px;
+            top: 66px;
+            object-fit: contain;
+            background-image: url(icons/folder\ icon.png);
+            transform: scale(0.4);
+            background-repeat: no-repeat;
+        }
+
+        .folder-icon3 {
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            left: 220px;
+            top: 96px;
+            object-fit: contain;
+            background-image: url(icons/folder\ icon.png);
+            transform: scale(0.4);
+            background-repeat: no-repeat;
+        }
+
         .chat-evidence {
             position: absolute;
             top: 80px;
@@ -75,7 +112,7 @@
         .documents-line {
             position: absolute;
             height: 3px;
-            width: 200px;
+            width: 175px;
             left: 60px;
             background-color: rgb(199, 199, 199);
         }
@@ -172,7 +209,7 @@
         .location-decor-container {
             position: absolute;
             border: 2px solid rgb(219, 219, 219);
-            background-color: #f0f0f0;
+            background-color: rgb(235, 235, 235);
             border-radius: 20px;
             width: 260px;
             height: 160px;
@@ -206,7 +243,7 @@
 
         .address-line {
             position: absolute;
-            height: 3px;
+            height: 2px;
             background-color: rgb(199, 199, 199);
         }
 
@@ -272,7 +309,7 @@
             border-radius: 20px;
             background-color: rgb(19, 19, 19);
             z-index: 2;
-            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
         }
 
         .notes-title {
@@ -335,6 +372,7 @@
             border-radius: 20px;
             background-color: rgb(19, 19, 19);
             z-index: 2;
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.4);
         }
 
         .information-title {
@@ -425,6 +463,67 @@
             z-index: 5;
         }
 
+        @font-face {
+            font-family: 'YouMurderer';
+            src: url('fonts/youmurdererbb_reg-webfont.woff2') format('woff2'),
+            url('fonts/youmurdererbb_reg-webfont.woff') format('woff');
+            font-weight: normal;
+            font-size: normal;
+        }
+
+        .sin-title {
+            font-family: 'YouMurderer';
+            font-size: 60px;
+            font-weight: 10;
+            color: rgb(207, 207, 207);
+            position: absolute;
+            left: 100px;
+            top: 20px;
+        }
+
+        .sins {
+            background: transparent;
+            color: rgb(207, 207, 207);
+            border-radius: 20px;
+            border: none;
+            position: absolute;
+            left: 50px;
+            top: 100px;
+            height: 120px;
+            width: 200px;
+            resize: none; 
+            overflow: hidden;
+            font-family: "YouMurderer";
+            font-size: 40px;
+            outline: none;
+            padding-left: 20px; /* Adjust the left padding as needed */
+            padding-top: 20px;  /* Adjust the top padding as needed */
+            padding-right: 20px; /* Adjust the right padding as needed */
+            padding-bottom: 20px; /* Adjust the bottom padding as needed */
+        }
+
+        .decor-container7 {
+            position: absolute;
+            width: 200px;
+            height: 160px;
+            top: 280px;
+            left: -20px;
+            border-radius: 20px;
+            background-color: rgb(231, 231, 231);
+            z-index: 4;
+        }
+
+        .social-media-container {
+            position: absolute;
+            width: 260px;
+            height: 500px;
+            top: 300px;
+            border-radius: 20px;
+            background-color: rgba(28, 28, 28, 0.85);
+            backdrop-filter: blur(24px);
+            z-index: 3;
+        }
+
     </style>
 </head>
 
@@ -434,7 +533,13 @@
         <div class="center"></div>
         <div class="square-corner"></div>
         <h2 class="subject" id="subject">x0001</h2>
+        <div class="decor-container7"></div>
+        <div class="social-media-container">
+
+        </div>
         <div class="information-container1">
+            <h1 class="sin-title">Sins</h1>
+            <textarea rows="4" cols="30" class="sins" spellcheck="false"></textarea>
             <div class="line9"></div>
             <h2 class="information-title">Subject Details</h2>
             <div class="information-container2">
@@ -473,7 +578,7 @@
         <div class="decor-container3"></div>
         <div class="decor-container4"></div>
         <div class="decor-container5">
-            <textarea rows="4" cols="40" class="details" spellcheck="false"></textarea>
+            <textarea rows="4" cols="40" class="details" spellcheck="false" placeholder="Notes"></textarea>
             <h2 class="notes-title">Annotation</h2>
         </div>
         <div class="decor-container6"></div>
@@ -486,10 +591,13 @@
             <h2 class="evidence">Documents</h2>
             <h2 class="identity-evidence">Identity</h2>
             <div class="line1 documents-line"></div>
+            <div class="folder-icon1"></div>
             <h2 class="chat-evidence">Chat</h2>
             <div class="line2 documents-line"></div>
+            <div class="folder-icon2"></div>
             <h2 class="location-evidence">Location</h2>
             <div class="line3 documents-line"></div>
+            <div class="folder-icon3"></div>
         </div>
     </div>
     <script>
@@ -516,6 +624,7 @@
         const inputs = document.querySelectorAll('.id-input');
         const textarea = document.querySelector('.details');
         const other = document.querySelector('.other');
+        const sins = document.querySelector('.sins');
 
         // Attach event listeners to all input fields and the textarea
         inputs.forEach(input => {
@@ -523,6 +632,7 @@
         });
         textarea.addEventListener('input', saveToJson);
         textarea.addEventListener('other', saveToJson);
+        textarea.addEventListener('sins', saveToJson);
 
         // Function to save JSON to local storage
         function saveToJson() {
@@ -541,6 +651,7 @@
             const details = document.querySelector('.details').value;
             const ip = document.querySelector('.ip').value;
             const birthday = document.querySelector('.birthday').value;
+            const sins = document.querySelector('.sins').value;
 
             // Create JSON object
             const jsonObject = {
@@ -557,7 +668,8 @@
                 "ip": ip,
                 "email": email,
                 "details": details,
-                "birthday": birthday
+                "birthday": birthday,
+                "sins": sins
             };
 
             // Convert JSON object to string
@@ -568,7 +680,7 @@
         }
 
         // Event listener to trigger saveToJson() function on input change
-        document.querySelectorAll('.id-input, .details').forEach(input => {
+        document.querySelectorAll('.id-input, .details, .sins').forEach(input => {
             input.addEventListener('input', saveToJson);
         });
 
@@ -591,6 +703,7 @@
                 document.querySelector('.email').value = jsonObject.email;
                 document.querySelector('.details').value = jsonObject.details;
                 document.querySelector('.birthday').value = jsonObject.birthday;
+                document.querySelector('.sins').value = jsonObject.sins;
             }
         });
         
