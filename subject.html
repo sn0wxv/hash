@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>snow</title>
+    <style>
+        body {
+            background-image: url(images/snow.jpg);
+        }
+
+        h2 {
+            color: rgb(207, 207, 207);
+            font-size: 11px;
+            font-family: 'Arial Narrow Bold';
+        }
+
+        .full-container {
+            position: fixed;
+            width: 1200px;
+            height: 800px;
+            border-radius: 20px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .subject {
+            position: fixed;
+            height: 50px;
+            width: 250px;
+            left: 620px;
+            color: white;
+            text-align: center;
+            z-index: 3;
+            font-size: 14px;
+        }
+        
+        .evidence-container {
+            position: relative;
+            background-color: rgb(19, 19, 19);
+            width: 325px;
+            height: 200px;
+            border-radius: 20px;
+            left: 875px;
+            top: 20px;
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .evidence {
+            position: absolute;
+            font-size: 14px;
+            top: 10px;
+            left: 22px;
+        }
+        
+        .identity-evidence {
+            position: absolute;
+            top: 50px;
+            left: 65px;
+        }
+
+        .chat-evidence {
+            position: absolute;
+            top: 80px;
+            left: 65px;
+        }
+
+        .location-evidence {
+            position: absolute;
+            top: 110px;
+            left: 65px;
+        }
+
+        .documents-line {
+            position: absolute;
+            height: 3px;
+            width: 200px;
+            left: 60px;
+            background-color: rgb(199, 199, 199);
+        }
+
+        .line1 {
+            top: 75px;
+        }
+
+        .line2 {
+            top: 105px;
+        }
+
+        .line3 {
+            top: 135px;
+        }
+
+        .decor-container {
+            position: absolute;
+            width: 400px;
+            height: 530px;
+            top: 270px;
+            left: 800px;
+            border-radius: 20px;
+            background-color: rgb(19, 19, 19);
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+        
+        .decor-container2 {
+            position: absolute;
+            left: 800px;
+            top: 10px;
+            border-radius: 12px;
+            background-color: rgb(19, 19, 19);
+            width: 20px;
+            height: 360px;
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .decor-container3 {
+            position: absolute;
+            left: 1180px;
+            border-radius: 20px;
+            background-color: rgb(19, 19, 19);
+            width: 20px;
+            height: 80px;
+        }
+        
+        .decor-container4 {
+            position: absolute;
+            left: 1168px;
+            background-color: rgb(19, 19, 19);
+            width: 20px;
+            height: 80px;
+            z-index: 1;
+        }
+
+        .decor-container6 {
+            position: absolute;
+            width: 400px;
+            height: 300px;
+            top: 0px;
+            left: 800px;
+            border-radius: 20px;
+            backdrop-filter: blur(6px);
+            z-index: 0;
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .curved-corner {
+            position: absolute;
+            background-color: rgb(19, 19, 19);
+            width: 50px;
+            height: 50px;
+            left: 800px;
+            top: 245px;
+            mask-image: radial-gradient(circle at 50px -5px, transparent 30px, black 30px);
+            z-index: 1;
+        }
+
+        .location-container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            top: 50px;
+            left: 80px;
+            background-color: rgb(17, 17, 17);
+            border-radius: 20px;
+            background-image: linear-gradient(45deg, #e7e7e7, #e0e0e0);
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .location-decor-container {
+            position: absolute;
+            border: 2px solid rgb(219, 219, 219);
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            width: 260px;
+            height: 160px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .id-input {
+            position: absolute;
+            margin-left: 10px;
+            width: 80px;
+            height: 20px;
+            color: rgb(0, 0, 0);
+            outline: none;
+            border: none;
+            background-color: transparent;
+            font-family: Arial;
+            font-size: 12px;
+        }
+
+        .location-title {
+            position: absolute;
+            color: rgb(218, 214, 214);
+            top: 5px;
+            left: 30px;
+            z-index: 2;
+            font-size: 14px;
+        }
+
+        .address-line {
+            position: absolute;
+            height: 3px;
+            background-color: rgb(199, 199, 199);
+        }
+
+        .country {
+            left: 30px;
+            top: 31px;
+            width: 120px;
+        }
+
+        .line4 {
+            left: 40px;
+            top: 60px;
+            width: 220px;
+        }
+
+        .line5 {
+            left: 40px;
+            top: 100px;
+            width: 220px;
+        }
+
+        .state {
+            top: 72.5px;
+            left: 30px;
+            width: 100px;
+        }
+
+        .address {
+            top: 115px;
+            left: 30px;
+            width: 200px;
+        }
+
+        .line6 {
+            left: 40px;
+            top: 140px;
+            width: 220px;
+        }
+        
+        .address-two {
+            top: 152.5px;
+            left: 30px;
+            width: 200px;
+        }
+
+        .zip-code {
+            top: 30px;
+            left: 180px;
+            width: 60px;
+        }
+
+        .city {
+            left: 140px;
+            top: 72.5px;
+        }
+
+        .decor-container5 {
+            position: absolute;
+            width: 590px;
+            height: 480px;
+            top: 320px;
+            left: 240px;
+            border-radius: 20px;
+            background-color: rgb(19, 19, 19);
+            z-index: 2;
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .notes-title {
+            position: absolute;
+            color: rgb(223, 223, 223);
+            top: 5px;
+            left: 30px;
+            z-index: 3;
+            font-size: 14px;
+        }
+
+        .details {
+            background: transparent;
+            color: rgb(14, 14, 14);
+            border-radius: 20px;
+            border: none;
+            position: absolute;
+            background-color: rgb(235, 235, 235);
+            left: 40px;
+            top: 60px;
+            height: 340px;
+            width: 460px;
+            resize: none; 
+            overflow: hidden;
+            font-size: inherit;
+            outline: none;
+            padding-left: 20px; /* Adjust the left padding as needed */
+            padding-top: 20px;  /* Adjust the top padding as needed */
+            padding-right: 20px; /* Adjust the right padding as needed */
+            padding-bottom: 20px; /* Adjust the bottom padding as needed */
+        }
+
+        .triangle-decor {
+            position: absolute;
+            left: 700px;
+            top: 280px;
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 50px solid rgb(19, 19, 19);
+            z-index: 2;
+        }
+
+        .center {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid white;
+            width: 2px;
+            height: 2px;
+            z-index: 3;
+        }
+
+        .information-container1 {
+            position: absolute;
+            width: 780px;
+            height: 325px;
+            border-radius: 20px;
+            background-color: rgb(19, 19, 19);
+            z-index: 2;
+        }
+
+        .information-title {
+            position: absolute;
+            color: rgb(223, 223, 223);
+            top: 50px;
+            left: 350px;
+            z-index: 3;
+            font-size: 14px;
+        }
+
+        .information-container2 {
+            position: absolute;
+            width: 400px;
+            height: 200px;
+            top: 90px;
+            left: 325px;
+            background-color: rgb(17, 17, 17);
+            border-radius: 20px;
+            background-image: linear-gradient(45deg, #e7e7e7, #e0e0e0);
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .information-decor-container1 {
+            position: absolute;
+            border: 2px solid rgb(219, 219, 219);
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            width: 340px;
+            height: 160px;
+            left: 50%;
+            top: 20px;
+            transform: translate(-50%);
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .name {
+            left: 40px;
+            top: 40px;
+            width: 260px;
+        }
+
+        .aliases {
+            left: 40px;
+            top: 70px;
+            width: 260px;
+        }
+
+        .email {
+            left: 40px;
+            top: 100px;
+            width: 150px;
+        }
+
+        .phone-number {
+            left: 200px;
+            top: 100px;
+            width: 140px;
+        }
+
+        .age {
+            left: 40px;
+            top: 145px;
+            width: 35px;
+        }
+        
+        .birthday {
+            left: 75px;
+            top: 145px;
+            width: 120px;
+        }
+
+        .ip {
+            left: 200px;
+            top: 145px;
+            width: 120px;
+        }
+
+        .line9 {
+            position: absolute;
+            background-color: rgb(223, 223, 223);
+            left: 200px;
+            top: 20px;
+            width: 500px;
+            height: 3px;
+            border-radius: 4px;
+            background-image: linear-gradient(90deg, #e7e7e7, #c9c9c9);
+            z-index: 5;
+        }
+
+    </style>
+</head>
+
+<!--https://www.w3schools.com/css/css3_masking.asp-->
+<body>
+    <div class="full-container">
+        <div class="center"></div>
+        <div class="square-corner"></div>
+        <h2 class="subject" id="subject">x0001</h2>
+        <div class="information-container1">
+            <div class="line9"></div>
+            <h2 class="information-title">Subject Details</h2>
+            <div class="information-container2">
+                <div class="information-decor-container1"></div>
+                <div class="information-decor-container2"></div>
+                <div class="information-decor-container3"></div>
+                <input class="name id-input" spellcheck="false" placeholder="Name"></input>
+                <div class="line8"></div>
+                <input class="aliases id-input" spellcheck="false" placeholder="Aliases"></input>
+                <div class="line8"></div>
+                <input class="email id-input" spellcheck="false" placeholder="Email"></input>
+                <input class="phone-number id-input" spellcheck="false" placeholder="Phone Number"></input>
+                <div class="line8"></div>
+                <input class="age id-input" spellcheck="false" placeholder="Age"></input>
+                <input class="birthday id-input" spellcheck="false" placeholder="Birthday"></input>
+                <input class="ip id-input" spellcheck="false" placeholder="IP"></input>
+            </div>
+        </div>
+        <div class="decor-container">
+            <h2 class="location-title">Subject Location</h2>
+            <div class="location-container">
+                <div class="location-decor-container"></div>
+                <div class="line4 address-line"></div>
+                <input class="country id-input" spellcheck="false" placeholder="Country"></input>
+                <input class="zip-code id-input" spellcheck="false" placeholder="Zip Code"></input>
+                <div class="line6 address-line"></div>
+                <input class="state id-input" spellcheck="false" placeholder="State"></input>
+                <input class="city id-input" spellcheck="false" placeholder="City"></input>
+                <div class="line7 address-line"></div>
+                <input class="address id-input" spellcheck="false" placeholder="Address 1"></input>
+                <div class="line5 address-line"></div>
+                <input class="address-two id-input" spellcheck="false" placeholder="Address 2"></input>
+            </div>
+        </div>
+        <div class="decor-container2"></div>
+        <div class="decor-container3"></div>
+        <div class="decor-container4"></div>
+        <div class="decor-container5">
+            <textarea rows="4" cols="40" class="details" spellcheck="false"></textarea>
+            <h2 class="notes-title">Annotation</h2>
+        </div>
+        <div class="decor-container6"></div>
+        <div class="triangle-decor"></div>
+        
+        <div class="curved-corner">
+            <div class="corner"></div>
+        </div>
+        <div class="evidence-container">
+            <h2 class="evidence">Documents</h2>
+            <h2 class="identity-evidence">Identity</h2>
+            <div class="line1 documents-line"></div>
+            <h2 class="chat-evidence">Chat</h2>
+            <div class="line2 documents-line"></div>
+            <h2 class="location-evidence">Location</h2>
+            <div class="line3 documents-line"></div>
+        </div>
+    </div>
+    <script>
+        // if logged in
+        if (document.cookie.split(';').some((item) => item.trim().startsWith('loggedIn='))) {
+            var loggedIn = document.cookie.replace(/(?:(?:^|.*;\s*)loggedIn\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+            if (loggedIn === "true") {
+                // user is logged in, show page
+            } else {
+                // user is not logged in, redirect to login
+                window.location.href = "login.html";
+            }
+        } else {
+            // loggedIn cookie does not exist; redirect to login 
+            window.location.href = "login.html";
+        }
+
+        // selected subject page
+        const selectedSubject = localStorage.getItem('selectedSubject');
+        let subjectTitle = document.getElementById("subject");
+        subjectTitle.innerHTML=selectedSubject;
+
+         // Get all input fields and the textarea
+        const inputs = document.querySelectorAll('.id-input');
+        const textarea = document.querySelector('.details');
+        const other = document.querySelector('.other');
+
+        // Attach event listeners to all input fields and the textarea
+        inputs.forEach(input => {
+            input.addEventListener('input', saveToJson);
+        });
+        textarea.addEventListener('input', saveToJson);
+        textarea.addEventListener('other', saveToJson);
+
+        // Function to save JSON to local storage
+        function saveToJson() {
+            // Get user inputs
+            const name = document.querySelector('.name').value;
+            const aliases = document.querySelector('.aliases').value;
+            const age = document.querySelector('.age').value;
+            const phoneNumber = document.querySelector('.phone-number').value;
+            const country = document.querySelector('.country').value;
+            const zip = document.querySelector('.zip-code').value;
+            const state = document.querySelector('.state').value;
+            const city = document.querySelector('.city').value;
+            const address = document.querySelector('.address').value;
+            const address2 = document.querySelector('.address-two').value;
+            const email = document.querySelector('.email').value;
+            const details = document.querySelector('.details').value;
+            const ip = document.querySelector('.ip').value;
+            const birthday = document.querySelector('.birthday').value;
+
+            // Create JSON object
+            const jsonObject = {
+                "name": name,
+                "aliases": aliases,
+                "age": age,
+                "phone_number": phoneNumber,
+                "country": country,
+                "zip": zip,
+                "state": state,
+                "city": city,
+                "address": address,
+                "address2": address2,
+                "ip": ip,
+                "email": email,
+                "details": details,
+                "birthday": birthday
+            };
+
+            // Convert JSON object to string
+            const jsonString = JSON.stringify(jsonObject);
+
+            // Save JSON string to local storage
+            localStorage.setItem(selectedSubject, jsonString);
+        }
+
+        // Event listener to trigger saveToJson() function on input change
+        document.querySelectorAll('.id-input, .details').forEach(input => {
+            input.addEventListener('input', saveToJson);
+        });
+
+        // Load saved data from local storage on page load
+        window.addEventListener('load', function() {
+            const savedData = localStorage.getItem(selectedSubject);
+            if (savedData) {
+                const jsonObject = JSON.parse(savedData);
+                document.querySelector('.name').value = jsonObject.name;
+                document.querySelector('.aliases').value = jsonObject.aliases;
+                document.querySelector('.age').value = jsonObject.age;
+                document.querySelector('.phone-number').value = jsonObject.phone_number;
+                document.querySelector('.country').value = jsonObject.country;
+                document.querySelector('.zip-code').value = jsonObject.zip;
+                document.querySelector('.state').value = jsonObject.state;
+                document.querySelector('.city').value = jsonObject.city;
+                document.querySelector('.address').value = jsonObject.address;
+                document.querySelector('.address-two').value = jsonObject.address2;
+                document.querySelector('.ip').value = jsonObject.ip;
+                document.querySelector('.email').value = jsonObject.email;
+                document.querySelector('.details').value = jsonObject.details;
+                document.querySelector('.birthday').value = jsonObject.birthday;
+            }
+        });
+        
+    </script>
+</body>
+</html>

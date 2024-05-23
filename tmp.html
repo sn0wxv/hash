@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>snow</title>
+    <style>
+        body {
+            background: black;
+            background-image: url(images/snow.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh; /* Ensure body fills the viewport height */
+            overflow: hidden;
+        }
+
+        .back-button {
+            color: white;
+            top: 0px;
+            left: 40px;
+            font-size: 42px;
+            font-family: 'monospace';
+            text-decoration: none;
+            position: absolute;
+            height: 50px;
+            width: 100px;
+        }
+
+        .subject {
+            position: fixed;
+            left: 50%;
+            top: 10%;
+            transform: translate(-50%, -20%);
+            font-size: 36px;
+            color: white;
+        }
+
+        .information-container {
+            position: fixed;
+            width: 280px;
+            height: 500px;
+            border: 2px solid rgb(165, 165, 165);
+            border-radius: 12px;
+            left: 60%;
+            top: 50%;
+            transform: translate(40%, -50%);
+            z-index: 2;
+        }
+
+        .details {
+            background: transparent;
+            color: white;
+            border-radius: 12px;
+            border: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-65%, -50%);
+            height: 500px;
+            width: 600px;
+            resize: none; 
+            overflow: hidden;
+            font-size: inherit;
+            outline: none;
+        }
+
+        .other {
+            position: fixed;
+            width: 270px;
+            left: 8px;
+            top: 344px;
+            height: 213px;
+            background: transparent;
+            color: white;
+            border-radius: 10px;
+            border: none;
+            resize: none; 
+            overflow: hidden;
+            font-size: 14px; 
+            outline: none;
+            font-family: Arial;
+            white-space: nowrap;
+        }
+
+        .id-input {
+            position: inherit;
+            margin-left: 10px;
+            width: 230px;
+            height: 30px;
+            color: white;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            font-family: Arial;
+        }
+
+        .placeholder {
+            font-family: Arial;
+            font-size: 14px;
+            position: fixed;
+            color: white;
+            margin-top: 8px;
+            left: 10px;
+        }
+
+        .name-placeholder {
+            top: 10px;
+        }
+
+        .alias-placeholder {
+            top: 40px;
+        }
+    
+        .age-placeholder {
+            top: 70px;
+        }
+
+        .phone-placeholder {
+            top: 100px;
+        }
+
+        .email-placeholder {
+            top: 130px;
+        }
+
+        .address-placeholder {
+            top: 160px;
+        }
+
+        .twitter-placeholder {
+            top: 190px;
+        }
+
+        .instagram-placeholder {
+            top: 220px;
+        }
+
+        .facebook-placeholder {
+            top: 250px;
+        }
+
+        .ip-placeholder {
+            top: 280px;
+        }
+
+        .birthday-placeholder {
+            top: 310px;
+        }
+
+        .other-placeholder {
+            top: 280px;
+        }
+
+        .name {
+            top: 10px;
+            left: 42px;
+            width: 220px;
+        }
+
+        .aliases {
+            top: 40px;
+            left: 50px;
+            width: 215px;
+        }
+        
+        .age {
+            top: 70px;
+            left: 30px;
+        }
+
+        .phone-number {
+            top: 100px;
+            left: 100px;
+            width: 165px;
+        }
+
+        .email {
+            top: 130px;
+            left: 40px;
+            width: 226px;
+        }
+
+        .address {
+            top: 160px;
+            left: 56px;
+            width: 210px;
+        }
+
+        .twitter {
+            top: 190px;
+            left: 45px;
+            width: 220px;
+        }
+
+        .instagram {
+            top: 220px;
+            left: 66px;
+            width: 200px;
+        }
+
+        .facebook {
+            top: 250px;
+            left: 66px;
+            width: 200px;
+        }
+
+        .ip {
+            top: 280px;
+            left: 18px;
+            width: 250px;
+        }
+
+        .birthday {
+            top: 310px;
+            left: 56px;
+            width: 210px;
+        }
+
+    </style>
+</head>
+<body>
+    <a class="back-button" href="index.html"><</a>
+    <div class="subject" id="subject">Subject</div>
+    <div class="container">
+        <div class="information-container">
+            <div class="name-placeholder placeholder">Name:</div>
+            <input class="name id-input" spellcheck="false"></input>
+            <div class="alias-placeholder placeholder">Aliases:</div>
+            <input class="aliases id-input" spellcheck="false"></input>
+            <div class="age-placeholder placeholder">Age:</div>
+            <input class="age id-input" spellcheck="false"></input>
+            <div class="phone-placeholder placeholder">Phone Number:</div>
+            <input class="phone-number id-input" spellcheck="false"></input>
+            <div class="email-placeholder placeholder">Email:</div>
+            <input class="email id-input" spellcheck="false"></input>
+            <div class="address-placeholder placeholder">Address:</div>
+            <input class="address id-input" spellcheck="false" ></input>
+            <div class="twitter-placeholder placeholder">Twitter:</div>
+            <input class="twitter id-input" spellcheck="false"></input>
+            <div class="instagram-placeholder placeholder">Instagram:</div>
+            <input class="instagram id-input" spellcheck="false"></input>
+            <div class="facebook-placeholder placeholder">Facebook:</div>
+            <input class="facebook id-input" spellcheck="false"></input>
+            <div class="ip-placeholder placeholder">IP:</div>
+            <input class="ip id-input" spellcheck="false"></input>
+            <div class="birthday-placeholder placeholder">Birthday:</div>
+            <input class="birthday id-input" spellcheck="false"></input>
+            <textarea rows="4" cols="40" class="other" spellcheck="false" placeholder="Other details:"></textarea>
+        </div>
+        <textarea rows="4" cols="40" class="details" spellcheck="false"></textarea>
+    </div>
+    <script>
+        // if logged in
+        if (document.cookie.split(';').some((item) => item.trim().startsWith('loggedIn='))) {
+            var loggedIn = document.cookie.replace(/(?:(?:^|.*;\s*)loggedIn\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+            if (loggedIn === "true") {
+                // user is logged in, show page
+            } else {
+                // user is not logged in, redirect to login
+                window.location.href = "login.html";
+            }
+        } else {
+            // loggedIn cookie does not exist; redirect to login 
+            window.location.href = "login.html";
+        }
+
+        // selected subject page
+        const selectedSubject = localStorage.getItem('selectedSubject');
+        let subjectTitle = document.getElementById("subject");
+        subjectTitle.innerHTML="Subject " + selectedSubject;
+
+         // Get all input fields and the textarea
+        const inputs = document.querySelectorAll('.id-input');
+        const textarea = document.querySelector('.details');
+        const other = document.querySelector('.other');
+
+        // Attach event listeners to all input fields and the textarea
+        inputs.forEach(input => {
+            input.addEventListener('input', saveToJson);
+        });
+        textarea.addEventListener('input', saveToJson);
+        textarea.addEventListener('other', saveToJson);
+
+        // Function to save JSON to local storage
+        function saveToJson() {
+            // Get user inputs
+            const name = document.querySelector('.name').value;
+            const aliases = document.querySelector('.aliases').value;
+            const age = document.querySelector('.age').value;
+            const facebook = document.querySelector('.facebook').value;
+            const instagram = document.querySelector('.instagram').value;
+            const twitter = document.querySelector('.twitter').value;
+            const phoneNumber = document.querySelector('.phone-number').value;
+            const address = document.querySelector('.address').value;
+            const email = document.querySelector('.email').value;
+            const details = document.querySelector('.details').value;
+            const ip = document.querySelector('.ip').value;
+            const birthday = document.querySelector('.birthday').value;
+            const other = document.querySelector('.other').value;
+
+            // Create JSON object
+            const jsonObject = {
+                "name": name,
+                "aliases": aliases,
+                "age": age,
+                "facebook": facebook,
+                "instagram": instagram,
+                "twitter": twitter,
+                "phone_number": phoneNumber,
+                "address": address,
+                "ip": ip,
+                "email": email,
+                "details": details,
+                "birthday": birthday,
+                "other": other
+            };
+
+            // Convert JSON object to string
+            const jsonString = JSON.stringify(jsonObject);
+
+            // Save JSON string to local storage
+            localStorage.setItem(selectedSubject, jsonString);
+        }
+
+        // Event listener to trigger saveToJson() function on input change
+        document.querySelectorAll('.id-input, .details, .other').forEach(input => {
+            input.addEventListener('input', saveToJson);
+        });
+
+        // Load saved data from local storage on page load
+        window.addEventListener('load', function() {
+            const savedData = localStorage.getItem(selectedSubject);
+            if (savedData) {
+                const jsonObject = JSON.parse(savedData);
+                document.querySelector('.name').value = jsonObject.name;
+                document.querySelector('.aliases').value = jsonObject.aliases;
+                document.querySelector('.age').value = jsonObject.age;
+                document.querySelector('.facebook').value = jsonObject.facebook;
+                document.querySelector('.instagram').value = jsonObject.instagram;
+                document.querySelector('.twitter').value = jsonObject.twitter;
+                document.querySelector('.phone-number').value = jsonObject.phone_number;
+                document.querySelector('.address').value = jsonObject.address;
+                document.querySelector('.ip').value = jsonObject.ip;
+                document.querySelector('.email').value = jsonObject.email;
+                document.querySelector('.details').value = jsonObject.details;
+                document.querySelector('.birthday').value = jsonObject.birthday;
+                document.querySelector('.other').value = jsonObject.other;
+            }
+        });
+        
+    </script>
+</body>
+</html>
