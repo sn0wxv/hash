@@ -3,68 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map Image Fetcher</title>
+    <title>Image Container</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        #map {
-            margin-top: 20px;
-            border: 1px solid #ccc;
-            width: 600px;
-            height: 400px;
-            background-color: #e0e0e0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        #map img {
-            max-width: 100%;
-            max-height: 100%;
+        #imageContainer {
+            width: 200px; /* Initial width */
+            height: 200px; /* Initial height */
+            background-size: cover;
+            background-position: center;
+            background-color: #f0f0f0; /* Default background color */
+            border: 2px solid #ccc;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <h1>Enter an Address to Get a Map Image</h1>
-    <form id="addressForm">
-        <input type="text" id="address" name="address" placeholder="Enter address" required>
-        <button type="submit">Get Map</button>
-    </form>
-    <div id="map">Map will appear here</div>
 
-    <script>
-        const form = document.getElementById('addressForm');
-        const mapDiv = document.getElementById('map');
+<div id="imageContainer" onclick="enlargePhoto()">
+    <input type="file" id="fileInput" style="display: none;" accept=".png, .jpg, .jpeg" onchange="displayImage(event)">
+    <label for="fileInput">Click to upload photo</label>
+</div>
 
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const address = document.getElementById('address').value;
-            const apiKey = 'AIzaSyDNwyammTAtUEeIzbxLC7qtzvZzctoaelg';  // Replace with your actual API key
+<script>
+    function displayImage(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const imageContainer = document.getElementById('imageContainer');
+                imageContainer.style.backgroundImage = `url('${reader.result}')`;
+                imageContainer.innerHTML = ''; // Clear any existing content
+            };
+            reader.readAsDataURL(file);
+        }
+    }
 
-            // URL encode the address
-            const encodedAddress = encodeURIComponent(address);
+    function enlargePhoto() {
+        const imageContainer = document.getElementById('imageContainer');
+        const currentWidth = imageContainer.offsetWidth;
+        if (currentWidth === 200) {
+            imageContainer.style.width = '400px'; // Enlarge the container
+            imageContainer.style.height = '400px'; // Adjust height accordingly
+        } else {
+            imageContainer.style.width = '200px'; // Shrink the container back to original size
+            imageContainer.style.height = '200px';
+        }
+    }
+</script>
 
-            // Google Maps Static API URL
-            const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${encodedAddress}&zoom=14&size=600x400&key=${apiKey}`;
-
-            // Create an image element and set its src to the map URL
-            const img = document.createElement('img');
-            img.src = mapUrl;
-            img.alt = `Map of ${address}`;
-
-            // Clear previous map and append the new one
-            while (mapDiv.firstChild) {
-                mapDiv.removeChild(mapDiv.firstChild);
-            }
-            mapDiv.appendChild(img);
-        });
-    </script>
 </body>
 </html>

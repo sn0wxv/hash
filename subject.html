@@ -7,7 +7,33 @@
     <title>snow</title>
     <style>
         body {
-            background-image: url(images/snow.jpg);
+            background-color: black;
+            background-image: url(images/red.jpg);
+            background-size: cover;
+        }
+
+        .back-button {
+            color: white;
+            top: 0px;
+            left: 40px;
+            font-size: 42px;
+            font-family: 'monospace';
+            text-decoration: none;
+            position: absolute;
+            height: 50px;
+            width: 100px;
+            z-index: 4;
+        }
+
+        .background-darken {
+            background-color: black;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            opacity: 50%;
         }
 
         h2 {
@@ -39,7 +65,7 @@
         
         .evidence-container {
             position: relative;
-            background-color: rgb(19, 19, 19);
+            background-color: rgba(19, 19, 19, 0.9);
             width: 325px;
             height: 200px;
             border-radius: 20px;
@@ -61,7 +87,7 @@
             left: 65px;
         }
 
-        .folder-icon1 {
+        .identity-folder-icon {
             position: absolute;
             width: 64px;
             height: 64px;
@@ -71,9 +97,65 @@
             background-image: url(icons/folder\ icon.png);
             transform: scale(0.4);
             background-repeat: no-repeat;
+            cursor: pointer;
         }
 
-        .folder-icon2 {
+        .identity-container {
+            position: absolute;
+            width: 300px;
+            height: 800px;
+            top: -20px;
+            left: 350px;
+            background-color: rgb(221, 221, 221);
+            border-radius: 20px;
+            z-index: 2;
+        }
+
+        #identity-container {
+            visibility: hidden;
+        }
+
+        .identity-title {
+            position: absolute;
+            color: black;
+            left: 50%;
+            top: 10px;
+            font-size: 14px;
+            text-wrap: nowrap;
+            transform: translate(-50%);
+        }
+
+        #imageContainer {
+            position: absolute;
+            width: 100px; /* Initial width */
+            height: 100px; /* Initial height */
+            left: 20px;
+            top: 60px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f0f0f0; /* Default background color */
+            border: 2px solid #ccc;
+            cursor: pointer;
+            z-index: 15;
+        }
+
+        #imageContainer img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .file-upload {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+        }
+
+        .chat-folder-icon {
             position: absolute;
             width: 64px;
             height: 64px;
@@ -83,9 +165,14 @@
             background-image: url(icons/folder\ icon.png);
             transform: scale(0.4);
             background-repeat: no-repeat;
+            cursor: pointer;
         }
 
-        .folder-icon3 {
+        #chat-container {
+            visibility: hidden;
+        }
+
+        .location-folder-icon {
             position: absolute;
             width: 64px;
             height: 64px;
@@ -95,6 +182,7 @@
             background-image: url(icons/folder\ icon.png);
             transform: scale(0.4);
             background-repeat: no-repeat;
+            cursor: pointer;
         }
 
         .chat-evidence {
@@ -354,17 +442,6 @@
             z-index: 2;
         }
 
-        .center {
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            border: 2px solid white;
-            width: 2px;
-            height: 2px;
-            z-index: 3;
-        }
-
         .information-container1 {
             position: absolute;
             width: 780px;
@@ -408,6 +485,7 @@
             transform: translate(-50%);
             box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
         }
+
 
         .name {
             left: 40px;
@@ -519,23 +597,128 @@
             height: 500px;
             top: 300px;
             border-radius: 20px;
-            background-color: rgba(28, 28, 28, 0.85);
-            backdrop-filter: blur(24px);
+            background-color: rgba(14, 14, 14, 0.4);
+            backdrop-filter: blur(2px);
             z-index: 3;
         }
 
+        .social-media-title {
+            position: absolute;
+            color: white;
+            top: 150px;
+            left: 20px;
+            font-size: 14px;
+        }
+        
+        .instagram {
+            color: white;
+            width: 200px;
+            top: 180px;
+        }
+
+        .facebook {
+            color: white;
+            width: 200px;
+            top: 200px;
+        }
+
+        .twitter {
+            color: white;
+            width: 200px;
+            top: 220px;
+        }
+
+        .youtube {
+            color: white;
+            width: 200px;
+            top: 240px;
+        }
+
+        .telegram {
+            color: white;
+            width: 200px;
+            top: 260px;
+        }
+        
+        .other1 {
+            color: white;
+            width: 200px;
+            top: 280px;
+        }
+        .other2 {
+            color: white;
+            width: 200px;
+            top: 300px;
+        }
+
+        .threat-title {
+            position: absolute;
+            color: white;
+            top: 340px;
+            left: 160px;
+            font-size: 14px;
+        }
+        
+        .slider-container {
+            position: absolute;
+            top: 375px;
+            left: 5px;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 200px;
+            height: 3px;
+            background: #dddddd00;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity .2s;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 10px;
+            height: 10px;
+            background: #8B0000;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #e4e4e400;
+            cursor: pointer;
+            border-radius: 50%;
+        }
     </style>
 </head>
 
 <!--https://www.w3schools.com/css/css3_masking.asp-->
 <body>
+    <div class="dark-mode"></div>
+    <a class="back-button" href="index.html"><</a>
+    <div class="background-darken"></div>
     <div class="full-container">
-        <div class="center"></div>
         <div class="square-corner"></div>
         <h2 class="subject" id="subject">x0001</h2>
         <div class="decor-container7"></div>
         <div class="social-media-container">
-
+            <h2 class="social-media-title">Media</h2>
+            <input class="instagram id-input" spellcheck="false" placeholder="Instagram"></input>
+            <input class="facebook id-input" spellcheck="false" placeholder="Facebook"></input>
+            <input class="twitter id-input" spellcheck="false" placeholder="Twitter"></input>
+            <input class="youtube id-input" spellcheck="false" placeholder="Youtube"></input>
+            <input class="telegram id-input" spellcheck="false" placeholder="Telegram"></input>
+            <input class="other1 id-input" spellcheck="false" placeholder="Other"></input>
+            <input class="other2 id-input" spellcheck="false" placeholder="Other"></input>
+            <h2 class="threat-title">Threat</h2>
+            <div class="slider-container">
+                <input type="range" class="slider id-input" min="0" max="100" value="0" oninput="updateValue(this)">
+                <div class="value-display" id="valueDisplay"></div>
+            </div>
         </div>
         <div class="information-container1">
             <h1 class="sin-title">Sins</h1>
@@ -591,13 +774,26 @@
             <h2 class="evidence">Documents</h2>
             <h2 class="identity-evidence">Identity</h2>
             <div class="line1 documents-line"></div>
-            <div class="folder-icon1"></div>
+            <div class="identity-folder-icon"></div>
+            <div id="identity-container" class="identity-container">
+                <h2 class="identity-title">Proof of Identification</h2>
+                <div id="imageContainer" onclick="enlargePhoto()">
+                    <input type="file" id="fileInput" style="display: none;" accept=".png, .jpg, .jpeg" onchange="displayImage(event)">
+                    <label class="file-upload" for="fileInput"></label>
+                </div>
+            </div>
             <h2 class="chat-evidence">Chat</h2>
             <div class="line2 documents-line"></div>
-            <div class="folder-icon2"></div>
+            <div class="chat-folder-icon"></div>
+            <div id="chat-container" class="chat-container">
+
+            </div>
             <h2 class="location-evidence">Location</h2>
             <div class="line3 documents-line"></div>
-            <div class="folder-icon3"></div>
+            <div class="location-folder-icon"></div>
+            <div id="location-menu" class="location-menu">
+                
+            </div>
         </div>
     </div>
     <script>
@@ -614,7 +810,7 @@
             // loggedIn cookie does not exist; redirect to login 
             window.location.href = "login.html";
         }
-
+        
         // selected subject page
         const selectedSubject = localStorage.getItem('selectedSubject');
         let subjectTitle = document.getElementById("subject");
@@ -623,16 +819,107 @@
          // Get all input fields and the textarea
         const inputs = document.querySelectorAll('.id-input');
         const textarea = document.querySelector('.details');
-        const other = document.querySelector('.other');
         const sins = document.querySelector('.sins');
+        /*
+        function updateValue(slider) {
+            const value = slider.value;
+            document.getElementById('valueDisplay').textContent = value;
+            updateSliderBackground(slider);
+        }
 
+        function updateSliderBackground(slider) {
+            const value = slider.value;
+            const percentage = (value - slider.min) / (slider.max - slider.min) * 100;
+            slider.style.background = `linear-gradient(to right, #8B0000 ${percentage}%, #232323 ${percentage}%)`;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.getElementById('slider');
+            updateSliderBackground(slider);
+        });*/
+        
         // Attach event listeners to all input fields and the textarea
         inputs.forEach(input => {
             input.addEventListener('input', saveToJson);
         });
-        textarea.addEventListener('input', saveToJson);
-        textarea.addEventListener('other', saveToJson);
-        textarea.addEventListener('sins', saveToJson);
+        textarea.addEventListener('change', saveToJson);
+        sins.addEventListener('change', saveToJson);
+
+        // open folders
+
+        const identity_folder = document.querySelector('.identity-folder-icon');
+        const chat_folder = document.querySelector('.chat-folder-icon');
+        const location_folder = document.querySelector('.location-folder-icon');
+
+        let isIdentityOpen = false;
+
+        function openIdentity() {
+            const identity_container = document.querySelector('#identity-container');
+
+            if (!isIdentityOpen) {
+                identity_container.style.visibility = 'visible';
+                console.log('Opening identity container');
+            } else {
+                identity_container.style.visibility = 'hidden';
+                console.log('Closing identity container');
+            }
+
+            // Toggle the state
+            isIdentityOpen = !isIdentityOpen;
+        }
+
+        identity_folder.addEventListener('click', openIdentity)
+
+
+        //////////////////////// identity ////////////////////////
+        
+        function displayImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    const imageContainer = document.getElementById('imageContainer');
+                        imageContainer.style.backgroundImage = `url('${reader.result}')`;
+                    imageContainer.innerHTML = ''; // Clear any existing content
+                    const imageData = reader.result.split(',')[1]; // Remove the "data:image/png;base64," part
+                    saveImageData(imageData); // Save image data to localStorage
+                    renderImage(imageData); // Render the image on the page
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function enlargePhoto() {
+            const imageContainer = document.getElementById('imageContainer');
+            const currentWidth = imageContainer.offsetWidth;
+            if (currentWidth < 200) {
+                imageContainer.style.width = '1000px'; // Enlarge the container
+                imageContainer.style.height = '800px'; // Adjust height accordingly
+                imageContainer.style.left = '-900px'; // Enlarge the container
+                imageContainer.style.top = '-100px'; // Enlarge the container
+            } else {
+                imageContainer.style.width = '100px'; // Shrink the container back to original size
+                imageContainer.style.height = '100px';
+                imageContainer.style.left = '20px'; // Enlarge the container
+                imageContainer.style.top = '60px'; // Enlarge the container
+            }
+        }
+
+        function openImageInNewTab(event) {
+            event.preventDefault(); // Prevent the default context menu
+            const imageContainer = document.getElementById('imageContainer');
+            const imageUrl = imageContainer.style.backgroundImage.replace('url("', '').replace('")', '');
+            const a = document.createElement('a');
+            a.href = imageUrl;
+            a.target = '_blank';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function saveImageData(imageData) {
+            localStorage.setItem('imageData', imageData);
+        }
 
         // Function to save JSON to local storage
         function saveToJson() {
@@ -652,6 +939,14 @@
             const ip = document.querySelector('.ip').value;
             const birthday = document.querySelector('.birthday').value;
             const sins = document.querySelector('.sins').value;
+            const instagram = document.querySelector('.instagram').value;
+            const facebook = document.querySelector('.facebook').value;
+            const twitter = document.querySelector('.twitter').value;
+            const youtube = document.querySelector('.youtube').value;
+            const telegram = document.querySelector('.telegram').value;
+            const other1 = document.querySelector('.other1').value;
+            const other2 = document.querySelector('.other2').value;
+            //const slider = document.getElementById('slider');
 
             // Create JSON object
             const jsonObject = {
@@ -669,7 +964,15 @@
                 "email": email,
                 "details": details,
                 "birthday": birthday,
-                "sins": sins
+                "sins": sins,
+                "instagram": instagram,
+                "facebook": facebook,
+                "twitter": twitter,
+                "youtube": youtube,
+                "telegram": telegram,
+                "other1": other1,
+                "other2": other2
+                //"slider": slider
             };
 
             // Convert JSON object to string
@@ -677,6 +980,13 @@
 
             // Save JSON string to local storage
             localStorage.setItem(selectedSubject, jsonString);
+            localStorage.setItem('imageData', imageData);
+        }
+
+        function renderImage(imageData) {
+            const image = new Image();
+            image.src = `data:image/jpeg;base64,${imageData}`;
+            document.getElementById('imageContainer').appendChild(image);
         }
 
         // Event listener to trigger saveToJson() function on input change
@@ -704,6 +1014,18 @@
                 document.querySelector('.details').value = jsonObject.details;
                 document.querySelector('.birthday').value = jsonObject.birthday;
                 document.querySelector('.sins').value = jsonObject.sins;
+                document.querySelector('.instagram').value = jsonObject.instagram;
+                document.querySelector('.facebook').value = jsonObject.facebook;
+                document.querySelector('.twitter').value = jsonObject.twitter;
+                document.querySelector('.youtube').value = jsonObject.youtube;
+                document.querySelector('.telegram').value = jsonObject.telegram;
+                document.querySelector('.other1').value = jsonObject.other1;
+                document.querySelector('.other2').value = jsonObject.other2;
+                //document.querySelector('.slider').value = jsonObject.slider;
+                const imageData = localStorage.getItem('imageData');
+                if (imageData) {
+                    renderImage(imageData);
+                }
             }
         });
         
