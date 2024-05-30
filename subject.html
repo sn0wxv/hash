@@ -5,15 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>snow</title>
+    <link rel="icon" type="image/x-icon" href="/icons/grey-snow.png">
     <style>
         body {
+            background: url(images/red.jpg);
             background-color: black;
-            background-image: url(images/red.jpg);
-            background-size: cover;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1000;
+            overflow: hidden;
         }
 
         .back-button {
-            color: white;
+            color: rgb(88, 18, 18);
             top: 0px;
             left: 40px;
             font-size: 42px;
@@ -32,7 +42,7 @@
             top: 50%;
             transform: translate(-50%, -50%);
             width: 100%;
-            height: 100%;
+            height: 110%;
             opacity: 50%;
         }
 
@@ -125,11 +135,63 @@
             transform: translate(-50%);
         }
 
-        #imageContainer {
+        .file-upload {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+        }
+
+        .chat-container {
+            position: absolute;
+            width: 300px;
+            height: 800px;
+            top: -20px;
+            left: 350px;
+            background-color: rgb(221, 221, 221);
+            border-radius: 20px;
+            z-index: 2;
+            visibility: hidden;
+        }
+
+        .chat-log-title {
+            position: absolute;
+            color: black;
+            left: 50%;
+            top: 10px;
+            font-size: 14px;
+            text-wrap: nowrap;
+            transform: translate(-50%);
+        }
+
+        .location-evidence-title {
+            position: absolute;
+            color: black;
+            left: 50%;
+            top: 10px;
+            font-size: 14px;
+            text-wrap: nowrap;
+            transform: translate(-50%);
+        }
+
+        #imageContainer1, #imageContainer11, #imageContainer21 {
             position: absolute;
             width: 100px; /* Initial width */
             height: 100px; /* Initial height */
-            left: 20px;
+            left: 30px;
+            top: 60px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f0f0f0; /* Default background color */
+            border: 2px solid #ccc;
+            cursor: pointer;
+            z-index: 15;
+        }
+        
+        #imageContainer2, #imageContainer12, #imageContainer22 {
+            position: absolute;
+            width: 100px; /* Initial width */
+            height: 100px; /* Initial height */
+            left: 165px;
             top: 60px;
             background-size: cover;
             background-position: center;
@@ -139,7 +201,119 @@
             z-index: 15;
         }
 
-        #imageContainer img {
+        #imageContainer3, #imageContainer13, #imageContainer23 {
+            position: absolute;
+            width: 100px; /* Initial width */
+            height: 100px; /* Initial height */
+            left: 30px;
+            top: 190px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f0f0f0; /* Default background color */
+            border: 2px solid #ccc;
+            cursor: pointer;
+            z-index: 15;
+        }
+
+        #imageContainer4, #imageContainer14, #imageContainer24 {
+            position: absolute;
+            width: 100px; /* Initial width */
+            height: 100px; /* Initial height */
+            left: 165px;
+            top: 190px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f0f0f0; /* Default background color */
+            border: 2px solid #ccc;
+            cursor: pointer;
+            z-index: 15;
+        }
+        
+        #imageContainer5, #imageContainer15, #imageContainer25 {
+            position: absolute;
+            width: 100px; /* Initial width */
+            height: 100px; /* Initial height */
+            left: 30px;
+            top: 320px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f0f0f0; /* Default background color */
+            border: 2px solid #ccc;
+            cursor: pointer;
+            z-index: 15;
+        }
+
+        #imageContainer6, #imageContainer16, #imageContainer26 {
+            position: absolute;
+            width: 100px; /* Initial width */
+            height: 100px; /* Initial height */
+            left: 165px;
+            top: 320px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f0f0f0; /* Default background color */
+            border: 2px solid #ccc;
+            cursor: pointer;
+            z-index: 15;
+        }
+
+        #imageContainer7, #imageContainer17, #imageContainer27 {
+            position: absolute;
+            width: 100px; /* Initial width */
+            height: 100px; /* Initial height */
+            left: 30px;
+            top: 450px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f0f0f0; /* Default background color */
+            border: 2px solid #ccc;
+            cursor: pointer;
+            z-index: 15;
+        }
+
+        #imageContainer8, #imageContainer18, #imageContainer28 {
+            position: absolute;
+            width: 100px; /* Initial width */
+            height: 100px; /* Initial height */
+            left: 165px;
+            top: 450px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f0f0f0; /* Default background color */
+            border: 2px solid #ccc;
+            cursor: pointer;
+            z-index: 15;
+        }
+
+        #imageContainer9, #imageContainer19, #imageContainer29 {
+            position: absolute;
+            width: 100px; /* Initial width */
+            height: 100px; /* Initial height */
+            left: 30px;
+            top: 580px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f0f0f0; /* Default background color */
+            border: 2px solid #ccc;
+            cursor: pointer;
+            z-index: 15;
+        }
+
+        #imageContainer10, #imageContainer20, #imageContainer30 {
+            position: absolute;
+            width: 100px; /* Initial width */
+            height: 100px; /* Initial height */
+            left: 165px;
+            top: 580px;
+            background-size: cover;
+            background-position: center;
+            background-color: #f0f0f0; /* Default background color */
+            border: 2px solid #ccc;
+            cursor: pointer;
+            z-index: 15;
+        }
+        
+        #imageContainer1 img, #imageContainer2 img, #imageContainer3 img, #imageContainer4 img, #imageContainer5 img, #imageContainer6 img, #imageContainer7 img, #imageContainer8 img, #imageContainer9 img, #imageContainer10 img, #imageContainer11 img, #imageContainer12 img, #imageContainer13 img, #imageContainer14 img, #imageContainer15 img, #imageContainer16 img, #imageContainer17 img, #imageContainer18 img, #imageContainer19 img, #imageContainer20 img, #imageContainer21 img, #imageContainer22 img, #imageContainer23 img, #imageContainer24 img, #imageContainer25 img, #imageContainer26 img, #imageContainer27 img, #imageContainer28 img, #imageContainer29 img, #imageContainer30 img  {
             max-width: 100%;
             max-height: 100%;
             display: block;
@@ -147,12 +321,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-        }
-
-        .file-upload {
-            position: absolute;
-            width: 100px;
-            height: 100px;
+            z-index: 101;
         }
 
         .chat-folder-icon {
@@ -168,10 +337,6 @@
             cursor: pointer;
         }
 
-        #chat-container {
-            visibility: hidden;
-        }
-
         .location-folder-icon {
             position: absolute;
             width: 64px;
@@ -183,6 +348,18 @@
             transform: scale(0.4);
             background-repeat: no-repeat;
             cursor: pointer;
+        }
+
+        .location-menu-container {
+            position: absolute;
+            width: 300px;
+            height: 800px;
+            top: -20px;
+            left: 350px;
+            background-color: rgb(221, 221, 221);
+            border-radius: 20px;
+            z-index: 2;
+            visibility: hidden;
         }
 
         .chat-evidence {
@@ -288,9 +465,8 @@
             height: 200px;
             top: 50px;
             left: 80px;
-            background-color: rgb(17, 17, 17);
+            background-color: rgb(226, 226, 226);
             border-radius: 20px;
-            background-image: linear-gradient(45deg, #e7e7e7, #e0e0e0);
             box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
         }
 
@@ -324,12 +500,12 @@
             position: absolute;
             color: rgb(218, 214, 214);
             top: 5px;
-            left: 30px;
+            left: 50px;
             z-index: 2;
             font-size: 14px;
         }
 
-        .address-line {
+        .address-line, .details-line {
             position: absolute;
             height: 2px;
             background-color: rgb(199, 199, 199);
@@ -351,6 +527,24 @@
             left: 40px;
             top: 100px;
             width: 220px;
+        }
+
+        .line10 {
+            left: 50px;
+            top: 62.5px;
+            width: 300px;
+        }
+
+        .line11 {
+            left: 50px;
+            top: 95px;
+            width: 300px;
+        }
+
+        .line12 {
+            left: 50px;
+            top: 125px;
+            width: 300px;
         }
 
         .state {
@@ -467,9 +661,8 @@
             height: 200px;
             top: 90px;
             left: 325px;
-            background-color: rgb(17, 17, 17);
+            background-color: rgb(226, 226, 226);
             border-radius: 20px;
-            background-image: linear-gradient(45deg, #e7e7e7, #e0e0e0);
             box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
         }
 
@@ -483,7 +676,7 @@
             left: 50%;
             top: 20px;
             transform: translate(-50%);
-            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.08);
         }
 
 
@@ -537,7 +730,6 @@
             width: 500px;
             height: 3px;
             border-radius: 4px;
-            background-image: linear-gradient(90deg, #e7e7e7, #c9c9c9);
             z-index: 5;
         }
 
@@ -555,8 +747,9 @@
             font-weight: 10;
             color: rgb(207, 207, 207);
             position: absolute;
-            left: 100px;
-            top: 20px;
+            left: 95px;
+            top: 60px;
+            cursor: default;
         }
 
         .sins {
@@ -693,19 +886,28 @@
             cursor: pointer;
             border-radius: 50%;
         }
+        
+        .blur-button {
+            position: absolute;
+            z-index: 5;
+            background-color: rgb(40, 40, 40);
+            color: rgb(235, 235, 235);
+            border: 1px black solid;
+            visibility: hidden;
+        }
+        
     </style>
 </head>
 
 <!--https://www.w3schools.com/css/css3_masking.asp-->
 <body>
-    <div class="dark-mode"></div>
     <a class="back-button" href="index.html"><</a>
     <div class="background-darken"></div>
     <div class="full-container">
         <div class="square-corner"></div>
-        <h2 class="subject" id="subject">x0001</h2>
-        <div class="decor-container7"></div>
-        <div class="social-media-container">
+        <h2 class="subject" id="subject">Subject</h2>
+        <div class="decor-container7" id="decor-container7"></div>
+        <div class="social-media-container" id="social-media-container">
             <h2 class="social-media-title">Media</h2>
             <input class="instagram id-input" spellcheck="false" placeholder="Instagram"></input>
             <input class="facebook id-input" spellcheck="false" placeholder="Facebook"></input>
@@ -720,8 +922,8 @@
                 <div class="value-display" id="valueDisplay"></div>
             </div>
         </div>
-        <div class="information-container1">
-            <h1 class="sin-title">Sins</h1>
+        <div class="information-container1" id="information-container1">
+            <a class="sin-title" id="sin-title">Sins</a>
             <textarea rows="4" cols="30" class="sins" spellcheck="false"></textarea>
             <div class="line9"></div>
             <h2 class="information-title">Subject Details</h2>
@@ -730,12 +932,12 @@
                 <div class="information-decor-container2"></div>
                 <div class="information-decor-container3"></div>
                 <input class="name id-input" spellcheck="false" placeholder="Name"></input>
-                <div class="line8"></div>
+                <div class="line10 details-line"></div>
                 <input class="aliases id-input" spellcheck="false" placeholder="Aliases"></input>
-                <div class="line8"></div>
+                <div class="line11 details-line"></div>
                 <input class="email id-input" spellcheck="false" placeholder="Email"></input>
                 <input class="phone-number id-input" spellcheck="false" placeholder="Phone Number"></input>
-                <div class="line8"></div>
+                <div class="line12 details-line"></div>
                 <input class="age id-input" spellcheck="false" placeholder="Age"></input>
                 <input class="birthday id-input" spellcheck="false" placeholder="Birthday"></input>
                 <input class="ip id-input" spellcheck="false" placeholder="IP"></input>
@@ -777,40 +979,267 @@
             <div class="identity-folder-icon"></div>
             <div id="identity-container" class="identity-container">
                 <h2 class="identity-title">Proof of Identification</h2>
-                <div id="imageContainer" onclick="enlargePhoto()">
-                    <input type="file" id="fileInput" style="display: none;" accept=".png, .jpg, .jpeg" onchange="displayImage(event)">
-                    <label class="file-upload" for="fileInput"></label>
+                <div id="imageContainer1" class="image-container" onclick="enlargePhoto('imageContainer1')">
+                    <button class="blur-button" onclick="blurImage('imageContainer1')">Blur Image</button>
+                    <input type="file" id="fileInput1" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer1')">
+                    <label class="file-upload" for="fileInput1"></label>
+                </div>
+                <div id="imageContainer2" class="image-container" onclick="enlargePhoto('imageContainer2')">
+                    <button class="blur-button" onclick="blurImage('imageContainer2')">Blur Image</button>
+                    <input type="file" id="fileInput2" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer2')">
+                    <label class="file-upload" for="fileInput2"></label>
+                </div>
+                <div id="imageContainer3" class="image-container" onclick="enlargePhoto('imageContainer3')">
+                    <button class="blur-button" onclick="blurImage('imageContainer3')">Blur Image</button>
+                    <input type="file" id="fileInput3" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer3')">
+                    <label class="file-upload" for="fileInput3"></label>
+                </div>
+                <div id="imageContainer4" class="image-container" onclick="enlargePhoto('imageContainer4')">
+                    <button class="blur-button" onclick="blurImage('imageContainer4')">Blur Image</button>
+                    <input type="file" id="fileInput4" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer4')">
+                    <label class="file-upload" for="fileInput4"></label>
+                </div>
+                <div id="imageContainer5" class="image-container" onclick="enlargePhoto('imageContainer5')">
+                    <button class="blur-button" onclick="blurImage('imageContainer5')">Blur Image</button>
+                    <input type="file" id="fileInput5" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer5')">
+                    <label class="file-upload" for="fileInput5"></label>
+                </div>
+                <div id="imageContainer6" class="image-container" onclick="enlargePhoto('imageContainer6')">
+                    <button class="blur-button" onclick="blurImage('imageContainer6')">Blur Image</button>
+                    <input type="file" id="fileInput6" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer6')">
+                    <label class="file-upload" for="fileInput6"></label>
+                </div>
+                <div id="imageContainer7" class="image-container" onclick="enlargePhoto('imageContainer7')">
+                    <button class="blur-button" onclick="blurImage('imageContainer7')">Blur Image</button>
+                    <input type="file" id="fileInput7" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer7')">
+                    <label class="file-upload" for="fileInput7"></label>
+                </div>
+                <div id="imageContainer8" class="image-container" onclick="enlargePhoto('imageContainer8')">
+                    <button class="blur-button" onclick="blurImage('imageContainer8')">Blur Image</button>
+                    <input type="file" id="fileInput8" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer8')">
+                    <label class="file-upload" for="fileInput8"></label>
+                </div>
+                <div id="imageContainer9" class="image-container" onclick="enlargePhoto('imageContainer9')">
+                    <button class="blur-button" onclick="blurImage('imageContainer9')">Blur Image</button>
+                    <input type="file" id="fileInput9" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer9')">
+                    <label class="file-upload" for="fileInput9"></label>
+                </div>
+                <div id="imageContainer10" class="image-container" onclick="enlargePhoto('imageContainer10')">
+                    <button class="blur-button" onclick="blurImage('imageContainer10')">Blur Image</button>
+                    <input type="file" id="fileInput10" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer10')">
+                    <label class="file-upload" for="fileInput10"></label>
                 </div>
             </div>
             <h2 class="chat-evidence">Chat</h2>
             <div class="line2 documents-line"></div>
             <div class="chat-folder-icon"></div>
             <div id="chat-container" class="chat-container">
-
+                <h2 class="chat-log-title">Subject Chat Logs</h2>
+                <div id="imageContainer11" class="image-container" onclick="enlargePhoto('imageContainer11')">
+                    <button class="blur-button" onclick="blurImage('imageContainer11')">Blur Image</button>
+                    <input type="file" id="fileInput11" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer11')">
+                    <label class="file-upload" for="fileInput11"></label>
+                </div>
+                <div id="imageContainer12" class="image-container" onclick="enlargePhoto('imageContainer12')">
+                    <button class="blur-button" onclick="blurImage('imageContainer12')">Blur Image</button>
+                    <input type="file" id="fileInput12" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer12')">
+                    <label class="file-upload" for="fileInput12"></label>
+                </div>
+                <div id="imageContainer13" class="image-container" onclick="enlargePhoto('imageContainer13')">
+                    <button class="blur-button" onclick="blurImage('imageContainer13')">Blur Image</button>
+                    <input type="file" id="fileInput13" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer13')">
+                    <label class="file-upload" for="fileInput13"></label>
+                </div>
+                <div id="imageContainer14" class="image-container" onclick="enlargePhoto('imageContainer14')">
+                    <button class="blur-button" onclick="blurImage('imageContainer14')">Blur Image</button>
+                    <input type="file" id="fileInput14" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer14')">
+                    <label class="file-upload" for="fileInput14"></label>
+                </div>
+                <div id="imageContainer15" class="image-container" onclick="enlargePhoto('imageContainer15')">
+                    <button class="blur-button" onclick="blurImage('imageContainer15')">Blur Image</button>
+                    <input type="file" id="fileInput15" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer15')">
+                    <label class="file-upload" for="fileInput15"></label>
+                </div>
+                <div id="imageContainer16" class="image-container" onclick="enlargePhoto('imageContainer16')">
+                    <button class="blur-button" onclick="blurImage('imageContainer16')">Blur Image</button>
+                    <input type="file" id="fileInput16" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer16')">
+                    <label class="file-upload" for="fileInput16"></label>
+                </div>
+                <div id="imageContainer17" class="image-container" onclick="enlargePhoto('imageContainer17')">
+                    <button class="blur-button" onclick="blurImage('imageContainer17')">Blur Image</button>
+                    <input type="file" id="fileInput17" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer17')">
+                    <label class="file-upload" for="fileInput17"></label>
+                </div>
+                <div id="imageContainer18" class="image-container" onclick="enlargePhoto('imageContainer18')">
+                    <button class="blur-button" onclick="blurImage('imageContainer18')">Blur Image</button>
+                    <input type="file" id="fileInput18" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer18')">
+                    <label class="file-upload" for="fileInput18"></label>
+                </div>
+                <div id="imageContainer19" class="image-container" onclick="enlargePhoto('imageContainer19')">
+                    <button class="blur-button" onclick="blurImage('imageContainer19')">Blur Image</button>
+                    <input type="file" id="fileInput19" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer19')">
+                    <label class="file-upload" for="fileInput19"></label>
+                </div>
+                <div id="imageContainer20" class="image-container" onclick="enlargePhoto('imageContainer20')">
+                    <button class="blur-button" onclick="blurImage('imageContainer20')">Blur Image</button>
+                    <input type="file" id="fileInput20" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer20')">
+                    <label class="file-upload" for="fileInput20"></label>
+                </div>
             </div>
             <h2 class="location-evidence">Location</h2>
             <div class="line3 documents-line"></div>
             <div class="location-folder-icon"></div>
-            <div id="location-menu" class="location-menu">
-                
+            <div id="location-menu-container" class="location-menu-container">
+                <h2 class="location-evidence-title">Evidence of Subject Location</h2>
+                <div id="imageContainer21" class="image-container" onclick="enlargePhoto('imageContainer21')">
+                    <button class="blur-button" onclick="blurImage('imageContainer21')">Blur Image</button>
+                    <input type="file" id="fileInput21" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer21')">
+                    <label class="file-upload" for="fileInput21"></label>
+                </div>
+                <div id="imageContainer22" class="image-container" onclick="enlargePhoto('imageContainer22')">
+                    <button class="blur-button" onclick="blurImage('imageContainer22')">Blur Image</button>
+                    <input type="file" id="fileInput22" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer22')">
+                    <label class="file-upload" for="fileInput22"></label>
+                </div>
+                <div id="imageContainer23" class="image-container" onclick="enlargePhoto('imageContainer23')">
+                    <button class="blur-button" onclick="blurImage('imageContainer23')">Blur Image</button>
+                    <input type="file" id="fileInput23" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer23')">
+                    <label class="file-upload" for="fileInput23"></label>
+                </div>
+                <div id="imageContainer24" class="image-container" onclick="enlargePhoto('imageContainer24')">
+                    <button class="blur-button" onclick="blurImage('imageContainer24')">Blur Image</button>
+                    <input type="file" id="fileInput24" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer24')">
+                    <label class="file-upload" for="fileInput24"></label>
+                </div>
+                <div id="imageContainer25" class="image-container" onclick="enlargePhoto('imageContainer25')">
+                    <button class="blur-button" onclick="blurImage('imageContainer25')">Blur Image</button>
+                    <input type="file" id="fileInput25" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer25')">
+                    <label class="file-upload" for="fileInput25"></label>
+                </div>
+                <div id="imageContainer26" class="image-container" onclick="enlargePhoto('imageContainer26')">
+                    <button class="blur-button" onclick="blurImage('imageContainer26')">Blur Image</button>
+                    <input type="file" id="fileInput26" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer26')">
+                    <label class="file-upload" for="fileInput26"></label>
+                </div>
+                <div id="imageContainer27" class="image-container" onclick="enlargePhoto('imageContainer27')">
+                    <button class="blur-button" onclick="blurImage('imageContainer27')">Blur Image</button>
+                    <input type="file" id="fileInput27" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer27')">
+                    <label class="file-upload" for="fileInput27"></label>
+                </div>
+                <div id="imageContainer28" class="image-container" onclick="enlargePhoto('imageContainer28')">
+                    <button class="blur-button" onclick="blurImage('imageContainer28')">Blur Image</button>
+                    <input type="file" id="fileInput28" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer28')">
+                    <label class="file-upload" for="fileInput28"></label>
+                </div>
+                <div id="imageContainer29" class="image-container" onclick="enlargePhoto('imageContainer29')">
+                    <button class="blur-button" onclick="blurImage('imageContainer29')">Blur Image</button>
+                    <input type="file" id="fileInput29" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer29')">
+                    <label class="file-upload" for="fileInput29"></label>
+                </div>
+                <div id="imageContainer30" class="image-container" onclick="enlargePhoto('imageContainer30')">
+                    <button class="blur-button" onclick="blurImage('imageContainer30')">Blur Image</button>
+                    <input type="file" id="fileInput30" style="display: none;" accept=".png, .jpg, .jpeg, .webp" onchange="displayImage(event, 'imageContainer30')">
+                    <label class="file-upload" for="fileInput30"></label>
+                </div>
             </div>
         </div>
     </div>
     <script>
-        // if logged in
-        if (document.cookie.split(';').some((item) => item.trim().startsWith('loggedIn='))) {
-            var loggedIn = document.cookie.replace(/(?:(?:^|.*;\s*)loggedIn\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-            if (loggedIn === "true") {
-                // user is logged in, show page
+        let darkmode = true;
+
+        function darkMode() {
+            const notes_textarea = getComputedStyle(textarea);
+            const decor_container1 = document.querySelector('.information-decor-container1');
+            const decor_container2 = document.querySelector('.location-decor-container');
+            const decor_container3 = document.querySelector('.decor-container7');
+            const information_container = document.querySelector('.information-container2');
+            const location_container = document.querySelector('.location-container');
+            const identity_container = document.querySelector('.identity-container');
+            const identity_title = document.querySelector('.identity-title');
+            const chat_container = document.querySelector('.chat-container');
+            const chat_title = document.querySelector('.chat-log-title');
+            const location_evidence_container = document.querySelector('.location-menu-container');
+            const location_title = document.querySelector('.location-evidence-title');
+            const details_lines = document.querySelectorAll('.details-line');
+            const address_lines = document.querySelectorAll('.address-line');
+            const documents_lines = document.querySelectorAll('.documents-line');
+            const image_containers = document.querySelectorAll('.image-container');
+            const line9 = document.querySelector('.line9');
+            if (notes_textarea.backgroundColor == 'rgb(235, 235, 235)') {
+                textarea.style.backgroundColor = 'rgb(40, 40, 40)';
+                textarea.style.color = 'rgb(200, 200, 200)';
+                decor_container1.style.backgroundColor = 'rgb(40, 40, 40)';
+                decor_container1.style.borderColor = 'rgb(40, 40, 40)';
+                decor_container2.style.backgroundColor = 'rgb(40, 40, 40)';
+                decor_container2.style.borderColor = 'rgb(40, 40, 40)';
+                decor_container3.style.backgroundColor = 'rgb(40, 40, 40)';
+                information_container.style.backgroundColor = 'rgb(30, 30, 30)';
+                location_container.style.backgroundColor = 'rgb(30, 30, 30)';
+                identity_container.style.backgroundColor = 'rgb(30, 30, 30)';
+                identity_title.style.color = 'rgb(200, 200, 200)';
+                chat_container.style.backgroundColor = 'rgb(30, 30, 30)';
+                chat_title.style.color = 'rgb(200, 200, 200)';
+                location_evidence_container.style.backgroundColor = 'rgb(30, 30, 30)';
+                location_title.style.color = 'rgb(200, 200, 200)';
+                line9.style.backgroundColor = 'rgb(60, 60, 60)';
+                inputs.forEach(input => {
+                    input.style.color = 'rgb(200, 200, 200)';//location-menu-container chat-container
+                });
+                details_lines.forEach(details_line => {
+                    details_line.style.backgroundColor = 'rgb(110, 110, 110)';
+                });
+                address_lines.forEach(address_line => {
+                    address_line.style.backgroundColor = 'rgb(110, 110, 110)';
+                });
+                documents_lines.forEach(documents_line => {
+                    documents_line.style.backgroundColor = 'rgb(110, 110, 110)';
+                });
+                image_containers.forEach(image_container => {
+                    image_container.style.backgroundColor = 'rgb(40, 40, 40)';
+                    image_container.style.borderColor = 'rgb(40, 40, 40)';
+                });
+                darkmode=true;
             } else {
-                // user is not logged in, redirect to login
-                window.location.href = "login.html";
+                textarea.style.backgroundColor = 'rgb(235, 235, 235)';
+                textarea.style.color = 'rgb(14, 14, 14)';
+                decor_container1.style.backgroundColor = 'rgb(235, 235, 235)';
+                decor_container1.style.borderColor = 'rgb(219, 219, 219)';
+                decor_container2.style.backgroundColor = 'rgb(235, 235, 235)';
+                decor_container2.style.borderColor = 'rgb(219, 219, 219)';
+                decor_container3.style.backgroundColor = 'rgb(235, 235, 235)';
+                information_container.style.backgroundColor = 'rgb(226, 226, 226)';
+                location_container.style.backgroundColor = 'rgb(226, 226, 226)';
+                identity_container.style.backgroundColor = 'rgb(221, 221, 221)';
+                identity_title.style.color = 'black';
+                chat_container.style.backgroundColor = 'rgb(221, 221, 221)';
+                chat_title.style.color = 'black';
+                location_evidence_container.style.backgroundColor = 'rgb(221, 221, 221)';
+                location_title.style.color = 'black';
+                line9.style.backgroundColor = 'rgb(223, 223, 223)';
+                inputs.forEach(input => {
+                    input.style.color = 'rgb(14, 14, 14)';
+                });
+                details_lines.forEach(details_line => {
+                    details_line.style.backgroundColor = 'rgb(199, 199, 199)';
+                });
+                address_lines.forEach(address_line => {
+                    address_line.style.backgroundColor = 'rgb(199, 199, 199)';
+                });
+                documents_lines.forEach(documents_line => {
+                    documents_line.style.backgroundColor = 'rgb(199, 199, 199)';
+                });
+                image_containers.forEach(image_container => {
+                    image_container.style.backgroundColor = 'rgb(240, 240, 240)';
+                    image_container.style.borderColor = 'rgb(204, 204, 204)';
+                });
+                darkmode=false;
             }
-        } else {
-            // loggedIn cookie does not exist; redirect to login 
-            window.location.href = "login.html";
+            localStorage.setItem('darkmode', darkmode);
         }
-        
+
+        const sins_title = document.querySelector(".sin-title");
+        sins_title.addEventListener("click", darkMode);
+    
         // selected subject page
         const selectedSubject = localStorage.getItem('selectedSubject');
         let subjectTitle = document.getElementById("subject");
@@ -851,63 +1280,111 @@
         const chat_folder = document.querySelector('.chat-folder-icon');
         const location_folder = document.querySelector('.location-folder-icon');
 
-        let isIdentityOpen = false;
+        let containers = [
+            { element: document.querySelector('#identity-container'), isOpen: false },
+            { element: document.querySelector('#chat-container'), isOpen: false },
+            { element: document.querySelector('#location-menu-container'), isOpen: false }
+        ];
 
-        function openIdentity() {
-            const identity_container = document.querySelector('#identity-container');
-
-            if (!isIdentityOpen) {
-                identity_container.style.visibility = 'visible';
-                console.log('Opening identity container');
-            } else {
-                identity_container.style.visibility = 'hidden';
-                console.log('Closing identity container');
+        function toggleContainer(clickedIndex) {
+            containers.forEach((container, index) => {
+                if (index === clickedIndex) {
+                    container.isOpen = !container.isOpen;
+                    container.element.style.visibility = container.isOpen ? 'visible' : 'hidden';
+                    console.log(`${container.isOpen ? 'Opening' : 'Closing'} ${container.element.id} container`);
+             } else {
+                    if (container.isOpen) {
+                        container.element.style.visibility = 'hidden';
+                        console.log(`Closing ${container.element.id} container`);
+                        container.isOpen = false;
+                    }
             }
-
-            // Toggle the state
-            isIdentityOpen = !isIdentityOpen;
+            });
         }
 
-        identity_folder.addEventListener('click', openIdentity)
+        identity_folder.addEventListener('click', function() {
+            toggleContainer(0);
+        });
 
+        chat_folder.addEventListener('click', function() {
+            toggleContainer(1);
+        });
 
-        //////////////////////// identity ////////////////////////
-        
-        function displayImage(event) {
+        location_folder.addEventListener('click', function() {
+            toggleContainer(2);
+        });
+
+        //////////////////////// identity ////////////////////////        
+        function displayImage(event, containerId) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function() {
-                    const imageContainer = document.getElementById('imageContainer');
-                        imageContainer.style.backgroundImage = `url('${reader.result}')`;
+                    const imageContainer = document.getElementById(containerId);
                     imageContainer.innerHTML = ''; // Clear any existing content
                     const imageData = reader.result.split(',')[1]; // Remove the "data:image/png;base64," part
-                    saveImageData(imageData); // Save image data to localStorage
-                    renderImage(imageData); // Render the image on the page
+                    saveImageData(containerId, imageData); // Save image data to localStorage
+                    renderImage(containerId, imageData); // Render the image on the page
                 };
                 reader.readAsDataURL(file);
             }
         }
 
-        function enlargePhoto() {
-            const imageContainer = document.getElementById('imageContainer');
+        function enlargePhoto(containerId) {
+            const imageContainer = document.getElementById(containerId);
+            const subject_element = document.getElementById('subject');
+            const media_container = document.getElementById('social-media-container');
+            const decor_container = document.getElementById('decor-container7');
+            const info_container = document.getElementById('information-container1');
+            var blurButton = document.querySelector('#' + containerId + ' .blur-button');
+            // Check if we have already stored the original size and position
+            if (!imageContainer.dataset.originalWidth) {
+                // Store the original size and position
+                imageContainer.dataset.originalWidth = imageContainer.offsetWidth-4;
+                imageContainer.dataset.originalHeight = imageContainer.offsetHeight-4;
+                imageContainer.dataset.originalLeft = imageContainer.style.left;
+                imageContainer.dataset.originalTop = imageContainer.style.top;
+            }
             const currentWidth = imageContainer.offsetWidth;
             if (currentWidth < 200) {
                 imageContainer.style.width = '1000px'; // Enlarge the container
-                imageContainer.style.height = '800px'; // Adjust height accordingly
-                imageContainer.style.left = '-900px'; // Enlarge the container
-                imageContainer.style.top = '-100px'; // Enlarge the container
+                imageContainer.style.height = '700px'; // Adjust height accordingly
+                imageContainer.style.left = '-1100px'; // Adjust position accordingly
+                imageContainer.style.top = '-100px'; // Adjust position accordingly
+                imageContainer.style.zIndex = '103';
+                imageContainer.style.backgroundColor = 'black';
+                imageContainer.style.borderColor = 'black';
+                subject_element.style.zIndex = '2';
+                media_container.style.zIndex = '1';
+                decor_container.style.zIndex = '2';
+                info_container.style.zIndex = '0';
+                if (blurButton) {
+                    blurButton.style.visibility = blurButton.style.visibility === 'visible' ? 'hidden' : 'visible';
+                }
             } else {
-                imageContainer.style.width = '100px'; // Shrink the container back to original size
-                imageContainer.style.height = '100px';
-                imageContainer.style.left = '20px'; // Enlarge the container
-                imageContainer.style.top = '60px'; // Enlarge the container
+                // Restore the original size and position
+                imageContainer.style.width = imageContainer.dataset.originalWidth + 'px';
+                imageContainer.style.height = imageContainer.dataset.originalHeight + 'px';
+                imageContainer.style.left = imageContainer.dataset.originalLeft;
+                imageContainer.style.top = imageContainer.dataset.originalTop;
+                imageContainer.style.zIndex = '101';
+                subject_element.style.zIndex = '3';
+                media_container.style.zIndex = '2';
+                decor_container.style.zIndex = '3';
+                info_container.style.zIndex = '1';
+                blurButton.style.visibility = 'hidden';
+                if (darkmode == false) {
+                    imageContainer.style.borderColor = '#ccc';
+                    imageContainer.style.backgroundColor = '#f0f0f0';
+                } else {
+                    imageContainer.style.borderColor = 'rgb(40, 40, 40)';
+                    imageContainer.style.backgroundColor = 'rgb(40, 40, 40)';
+                }
             }
         }
 
-        function openImageInNewTab(event) {
-            event.preventDefault(); // Prevent the default context menu
-            const imageContainer = document.getElementById('imageContainer');
+        function openImageInNewTab(containerId) {
+            const imageContainer = document.getElementById(containerId);
             const imageUrl = imageContainer.style.backgroundImage.replace('url("', '').replace('")', '');
             const a = document.createElement('a');
             a.href = imageUrl;
@@ -917,10 +1394,10 @@
             document.body.removeChild(a);
         }
 
-        function saveImageData(imageData) {
-            localStorage.setItem('imageData', imageData);
+        function saveImageData(containerId, imageData) {
+            const key = `imageData_${selectedSubject}_${containerId}`;
+            localStorage.setItem(key, imageData);
         }
-
         // Function to save JSON to local storage
         function saveToJson() {
             // Get user inputs
@@ -946,6 +1423,7 @@
             const telegram = document.querySelector('.telegram').value;
             const other1 = document.querySelector('.other1').value;
             const other2 = document.querySelector('.other2').value;
+            const darkModeValue = darkmode ? 'true' : 'false';
             //const slider = document.getElementById('slider');
 
             // Create JSON object
@@ -971,64 +1449,110 @@
                 "youtube": youtube,
                 "telegram": telegram,
                 "other1": other1,
-                "other2": other2
+                "other2": other2,
+                "darkmode" : darkModeValue
                 //"slider": slider
             };
-
-            // Convert JSON object to string
+             // Convert JSON object to string
             const jsonString = JSON.stringify(jsonObject);
 
             // Save JSON string to local storage
             localStorage.setItem(selectedSubject, jsonString);
-            localStorage.setItem('imageData', imageData);
         }
-
-        function renderImage(imageData) {
+        
+        function renderImage(containerId, imageData) {
             const image = new Image();
             image.src = `data:image/jpeg;base64,${imageData}`;
-            document.getElementById('imageContainer').appendChild(image);
+            document.getElementById(containerId).appendChild(image);
+        }
+
+        function blurImage(containerId) {
+            var container = document.getElementById(containerId);
+            var image = container.querySelector('img');
+            if (image) {
+                if (image.style.filter) {
+                    image.style.filter = '';
+                    localStorage.removeItem(containerId + '_blur'); // Store the blur state in local storage
+                } else {
+                    image.style.filter = 'blur(4px)'; // Adjust blur value as needed
+                    localStorage.setItem(containerId + '_blur', 'blurred'); // Store the blur state in local storage
+                }
+            } else {
+                console.log("Image not found in container:", containerId);
+            }
         }
 
         // Event listener to trigger saveToJson() function on input change
         document.querySelectorAll('.id-input, .details, .sins').forEach(input => {
             input.addEventListener('input', saveToJson);
         });
-
         // Load saved data from local storage on page load
         window.addEventListener('load', function() {
-            const savedData = localStorage.getItem(selectedSubject);
-            if (savedData) {
-                const jsonObject = JSON.parse(savedData);
-                document.querySelector('.name').value = jsonObject.name;
-                document.querySelector('.aliases').value = jsonObject.aliases;
-                document.querySelector('.age').value = jsonObject.age;
-                document.querySelector('.phone-number').value = jsonObject.phone_number;
-                document.querySelector('.country').value = jsonObject.country;
-                document.querySelector('.zip-code').value = jsonObject.zip;
-                document.querySelector('.state').value = jsonObject.state;
-                document.querySelector('.city').value = jsonObject.city;
-                document.querySelector('.address').value = jsonObject.address;
-                document.querySelector('.address-two').value = jsonObject.address2;
-                document.querySelector('.ip').value = jsonObject.ip;
-                document.querySelector('.email').value = jsonObject.email;
-                document.querySelector('.details').value = jsonObject.details;
-                document.querySelector('.birthday').value = jsonObject.birthday;
-                document.querySelector('.sins').value = jsonObject.sins;
-                document.querySelector('.instagram').value = jsonObject.instagram;
-                document.querySelector('.facebook').value = jsonObject.facebook;
-                document.querySelector('.twitter').value = jsonObject.twitter;
-                document.querySelector('.youtube').value = jsonObject.youtube;
-                document.querySelector('.telegram').value = jsonObject.telegram;
-                document.querySelector('.other1').value = jsonObject.other1;
-                document.querySelector('.other2').value = jsonObject.other2;
-                //document.querySelector('.slider').value = jsonObject.slider;
-                const imageData = localStorage.getItem('imageData');
-                if (imageData) {
-                    renderImage(imageData);
+            const imageContainers = [];
+            for (let i = 1; i <=30; i++) {
+                imageContainers.push(`imageContainer${i}`);
+            }
+            imageContainers.forEach(containerId => {
+                const key = `imageData_${selectedSubject}_${containerId}`;
+                const savedData = localStorage.getItem(key);
+                if (savedData) {
+                    renderImage(containerId, savedData);
+                }
+            });
+            const savedSubjectData = localStorage.getItem(selectedSubject);
+            if (savedSubjectData) {
+                try {
+                    const jsonObject = JSON.parse(savedSubjectData);
+                    document.querySelector('.name').value = jsonObject.name || '';
+                    document.querySelector('.aliases').value = jsonObject.aliases || '';
+                    document.querySelector('.age').value = jsonObject.age || '';
+                    document.querySelector('.phone-number').value = jsonObject.phone_number || '';
+                    document.querySelector('.country').value = jsonObject.country || '';
+                    document.querySelector('.zip-code').value = jsonObject.zip || '';
+                    document.querySelector('.state').value = jsonObject.state || '';
+                    document.querySelector('.city').value = jsonObject.city || '';
+                    document.querySelector('.address').value = jsonObject.address || '';
+                    document.querySelector('.address-two').value = jsonObject.address2 || '';
+                    document.querySelector('.ip').value = jsonObject.ip || '';
+                    document.querySelector('.email').value = jsonObject.email || '';
+                    document.querySelector('.details').value = jsonObject.details || '';
+                    document.querySelector('.birthday').value = jsonObject.birthday || '';
+                    document.querySelector('.sins').value = jsonObject.sins || '';
+                    document.querySelector('.instagram').value = jsonObject.instagram || '';
+                    document.querySelector('.facebook').value = jsonObject.facebook || '';
+                    document.querySelector('.twitter').value = jsonObject.twitter || '';
+                    document.querySelector('.youtube').value = jsonObject.youtube || '';
+                    document.querySelector('.telegram').value = jsonObject.telegram || '';
+                    document.querySelector('.other1').value = jsonObject.other1 || '';
+                    document.querySelector('.other2').value = jsonObject.other2 || '';
+                    function applyBlurState() {
+                        var imageContainers = document.querySelectorAll('.image-container');
+                        imageContainers.forEach(function(container) {
+                            var containerId = container.id;
+                            var blurState = localStorage.getItem(containerId + '_blur');
+                            var image = container.querySelector('img');
+                            if (blurState === 'blurred' && image) {
+                                image.style.filter = 'blur(4px)'; // Apply blur effect
+                            }
+                        });
+                    }
+                    
+                    // Call the function to apply blur state when the page loads
+                    applyBlurState();
+                } catch (error) {
+                    console.error('Error parsing JSON data:', error);
+                }
+            }
+            const savedDarkmode = localStorage.getItem('darkmode');
+            if (savedDarkmode) {
+                // Parse darkmode value from string to boolean
+                darkmode = savedDarkmode === 'true';
+                // Apply dark mode if saved value is true
+                if (darkmode) {
+                    darkMode();
                 }
             }
         });
-        
     </script>
 </body>
 </html>
